@@ -15,6 +15,8 @@ SRC = ft_itoa.c			\
 	  ft_atoi.c			\
 	  ft_strchr.c		\
 	  ft_strdup.c		\
+	  ft_itoa_16_to_lower.c \
+	  ft_ultoa_16_to_upper.c
 
 HEADER = ft_printf.h
 

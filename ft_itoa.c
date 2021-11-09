@@ -38,15 +38,19 @@ static char	ft_check_sign_and_zero_neg(int *n)
 	return ('0');
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int n, int plus_option)
 {
 	char	*s;
 	size_t	l;
 	size_t	len;
 	int		fix_int_min;
 
+	if (n >= 0 && plus_option)
+		plus_option++;
 	fix_int_min = ft_check_min(&n);
 	len = ft_len_nbr(n);
+	if (plus_option == 2)
+		len++;
 	s = (char *) malloc(len + 1);
 	if (!s)
 		return (NULL);
@@ -60,5 +64,12 @@ char	*ft_itoa(int n)
 	}
 	if (fix_int_min)
 		s[l - 1] = '8';
+	if (plus_option == 2 && s[0] == '0' && !s[1])
+	{
+		s[0] = '+';
+		s[1] = '0';
+	}
+	else if (plus_option == 2)
+		s[0] = '+';
 	return (s);
 }
