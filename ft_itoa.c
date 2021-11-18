@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  <>                                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/11 18:55:09 by                   #+#    #+#             */
+/*   Updated: 2021/11/11 18:55:09 by                  ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 
 static int	ft_check_min(int *n)
@@ -38,19 +49,15 @@ static char	ft_check_sign_and_zero_neg(int *n)
 	return ('0');
 }
 
-char	*ft_itoa(int n, int plus_option)
+char	*ft_itoa(int n)
 {
 	char	*s;
 	size_t	l;
 	size_t	len;
 	int		fix_int_min;
 
-	if (n >= 0 && plus_option)
-		plus_option++;
 	fix_int_min = ft_check_min(&n);
 	len = ft_len_nbr(n);
-	if (plus_option == 2)
-		len++;
 	s = (char *) malloc(len + 1);
 	if (!s)
 		return (NULL);
@@ -64,12 +71,5 @@ char	*ft_itoa(int n, int plus_option)
 	}
 	if (fix_int_min)
 		s[l - 1] = '8';
-	if (plus_option == 2 && s[0] == '0' && !s[1])
-	{
-		s[0] = '+';
-		s[1] = '0';
-	}
-	else if (plus_option == 2)
-		s[0] = '+';
 	return (s);
 }

@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmilan <gmilan@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/07 14:00:41 by gmilan            #+#    #+#             */
-/*   Updated: 2021/10/09 15:47:56 by gmilan           ###   ########.fr       */
+/*   Created: 2021/11/11 18:50:56 by                   #+#    #+#             */
+/*   Updated: 2021/11/11 18:51:02 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#include"ft_printf.h"
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+		if (*s++ == (unsigned char)c)
+			return ((char *)s - 1);
+	if (c == '\0')
+		return ((char *)s);
+	return ((void *)0);
+}
 
 char	*ft_strdup(const char *s1)
 {
@@ -30,4 +39,14 @@ char	*ft_strdup(const char *s1)
 		}
 	}
 	return (s);
+}
+
+int	ft_strlen(const	char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
